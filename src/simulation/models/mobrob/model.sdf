@@ -1,0 +1,425 @@
+<?xml version='1.0'?>
+<sdf version='1.5'>
+  <model name='me439_robot'>
+    <static>false</static>
+
+  <!-- ********************** ROBOT BASE *********************************  -->
+    <link name='chassis'>
+      <collision name='collision'>
+        <pose>0 0 .1 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>.235 .144 .015</size> <!-- body length -->
+          </box>
+        </geometry>
+      </collision>
+
+      <visual name='visual'>
+        <geometry>
+          <box>
+            <size>.235 .144 .015</size>
+          </box>
+        </geometry>
+        <material>
+          <ambient>1.0 0.0 0.0 1.0</ambient>
+          <diffuse>1.0 0.0 0.0 1.0</diffuse>
+          <specular>0.0 0.0 0.0 1.0</specular>
+          <emissive>0.0 0.0 0.0 1.0</emissive>
+        </material>
+      </visual>
+    </link>
+
+      <link name='picture'>
+        <pose relative_to="chassis">0 0 0.0075 0 0 0</pose>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>.144 .144 1e-5</size> <!-- body length -->
+            </box>
+          </geometry>
+        </collision>
+  
+        <visual name='visual'>
+          <geometry>
+            <box>
+              <size>.1175 .072 1e-5</size>
+            </box>
+          </geometry>
+          <material>
+              <script>
+                <uri>model://mobrob/materials/scripts</uri>
+                <uri>model://mobrob/materials/textures</uri>
+                <name>uwm</name>
+              </script>
+              <ambient>1.0 0.0 0.0 1.0</ambient>
+              <diffuse>1.0 0.0 0.0 1.0</diffuse>
+              <specular>0.0 0.0 0.0 1.0</specular>
+              <emissive>0.0 0.0 0.0 1.0</emissive>
+          </material>
+        </visual>
+
+      <!-- <collision name='caster_hub'>
+        <pose>-0.07 0 -0.0075 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>.015</radius>
+            <length>.022</length>
+          </cylinder>
+        </geometry>
+      </collision>
+
+      <visual name='caster_hub'>
+        <pose>-0.07 0 -0.0075 0 0 0</pose>
+        <geometry>
+          <cylinder>
+            <radius>.015</radius>
+            <length>.022</length>
+          </cylinder>
+        </geometry>
+      </visual> -->
+    </link>
+    <link name='front_caster'>
+      <pose relative_to="chassis">0.07 0 -0.015 0 0 0</pose>
+      <inertial>
+        <inertia>
+          <ixx>0.001</ixx>
+          <ixy>0.000</ixy>
+          <ixz>0.000</ixz>
+          <iyy>0.001</iyy>
+          <iyz>0.000</iyz>
+          <izz>0.001</izz>
+          <!-- <ixx>6.4e-5</ixx>
+          <ixy>0.000</ixy>
+          <ixz>0.000</ixz>
+          <iyy>6.4e-5</iyy>
+          <iyz>0.000</iyz>
+          <izz>6.4e-5</izz> -->
+        </inertia>
+        <mass>20.0</mass> <!-- 0.4-->
+      </inertial>
+      <collision name='caster_collision'>
+        <!-- <pose>-0.08 0 -0.0075 0 0 0</pose> -->
+        <geometry>
+            <sphere>
+            <radius>.02</radius>
+          </sphere>
+        </geometry>
+
+        <surface>
+          <friction>
+            <ode>
+              <mu>0.00</mu>
+              <mu2>0.00</mu2>
+              <slip1>1.0</slip1>
+              <slip2>1.0</slip2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+
+      <visual name='caster_visual'>
+        <!-- <pose>-0.08 0 -0.0075 0 0 0</pose> -->
+        <geometry>
+          <sphere>
+            <radius>.02</radius>
+          </sphere>
+        </geometry>
+        <material>
+          <ambient>0.0 0.0 0.0 1.0</ambient>
+          <diffuse>0.0 0.0 0.0 1.0</diffuse>
+          <specular>0.0 0.0 0.0 1.0</specular>
+          <emissive>0.0 0.0 0.0 1.0</emissive>
+        </material>
+      </visual>
+
+    </link>
+
+    <link name="left_wheel">
+      <pose relative_to="chassis">-0.05 0.0755 -0.005 0 1.5707 1.5707</pose>
+      <inertial>
+        <inertia>
+          <ixx>0.001</ixx>
+          <ixy>0.000</ixy>
+          <ixz>0.000</ixz>
+          <iyy>0.001</iyy>
+          <iyz>0.000</iyz>
+          <izz>0.001</izz>
+          <!-- <ixx>2.29e-5</ixx>
+          <ixy>0.000</ixy>
+          <ixz>0.000</ixz>
+          <iyy>2.29e-5</iyy>
+          <iyz>0.000</iyz>
+          <izz>4.5e-5</izz> -->
+        </inertia>
+        <mass>5.0</mass> <!-- 0.1-->
+      </inertial>
+      
+      <collision name="collision">
+        <geometry>
+          <cylinder>
+            <radius>.03</radius>
+            <length>.007</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <cylinder>
+            <radius>.03</radius>
+            <length>.007</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.0 0.0 0.0 1.0</ambient>
+          <diffuse>0.0 0.0 0.0 1.0</diffuse>
+          <specular>0.0 0.0 0.0 1.0</specular>
+          <emissive>0.0 0.0 0.0 1.0</emissive>
+        </material>
+      </visual>
+    </link>
+    
+    <link name="right_wheel">
+      <pose relative_to="chassis">-0.05 -0.0755 -0.005 0 1.5707 1.5707</pose>
+      <inertial>
+        <inertia>
+          <ixx>0.001</ixx>
+          <ixy>0.000</ixy>
+          <ixz>0.000</ixz>
+          <iyy>0.001</iyy>
+          <iyz>0.000</iyz>
+          <izz>0.001</izz>
+          <!-- <ixx>2.29e-5</ixx>
+          <ixy>0.000</ixy>
+          <ixz>0.000</ixz>
+          <iyy>2.29e-5</iyy>
+          <iyz>0.000</iyz>
+          <izz>4.5e-5</izz> -->
+        </inertia>
+        <mass>5.0</mass> <!-- 0.1-->
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <cylinder>
+            <radius>.03</radius>
+            <length>.007</length>
+          </cylinder>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <cylinder>
+            <radius>.03</radius>
+            <length>.007</length>
+          </cylinder>
+        </geometry>
+        <material>
+          <ambient>0.0 0.0 0.0 1.0</ambient>
+          <diffuse>0.0 0.0 0.0 1.0</diffuse>
+          <specular>0.0 0.0 0.0 1.0</specular>
+          <emissive>0.0 0.0 0.0 1.0</emissive>
+        </material>
+      </visual>
+    </link>
+
+<!-- *********************** IMU SENSOR SETUP **************************  -->
+  <link name="imu_link">
+    <gravity>true</gravity>
+    <sensor name="twr_imu" type="imu">
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <visualize>true</visualize>
+      <imu>
+        <orientation>
+          <x>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>2e-3</stddev>
+            </noise>
+          </x>
+          <y>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>2e-3</stddev>
+            </noise>
+          </y>
+          <z>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>2e-3</stddev>
+            </noise>
+          </z>
+        </orientation>
+        <angular_velocity>
+          <x>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>2e-4</stddev>
+            </noise>
+          </x>
+          <y>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>2e-4</stddev>
+            </noise>
+          </y>
+          <z>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>2e-4</stddev>
+            </noise>
+          </z>
+        </angular_velocity>
+        <linear_acceleration>
+          <x>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>1.7e-2</stddev>
+            </noise>
+          </x>
+          <y>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>1.7e-2</stddev>
+            </noise>
+          </y>
+          <z>
+            <noise type="gaussian">
+              <mean>0.0</mean>
+              <stddev>1.7e-2</stddev>
+            </noise>
+          </z>
+        </linear_acceleration>
+      </imu>
+      <plugin name="two_wheeled_robot_imu" filename="libgazebo_ros_imu_sensor.so">
+        <initial_orientation_as_reference>false</initial_orientation_as_reference>
+        <frame_name>imu_link</frame_name>
+        <ros>
+          <namespace>/imu</namespace>
+          <remapping>~/out:=data</remapping>
+        </ros>
+      </plugin>
+    </sensor>
+  </link>
+
+  <!-- *********************** CAMERA SENSOR SETUP **************************  -->
+
+  <link name="camera_link">
+    <sensor type="camera" name="mobrob_cam">
+      <update_rate>50.0</update_rate>
+      <camera name="head"> 
+          <horizontal_fov>0.96</horizontal_fov>
+          <image>
+              <width>960</width>
+              <height>720</height>
+              <format>R8G8B8</format>
+          </image>
+          <clip>
+              <near>0.1</near>
+              <far>300</far>
+          </clip>
+          <noise>
+              <type>gaussian</type>
+              <!-- Noise is sampled independently per pixel on each frame.
+                  That pixel's noise value is added to each of its color
+                  channels, which at that point lie in the range [0,1]. -->
+              <mean>0.0</mean>
+              <stddev>0.007</stddev>
+          </noise>
+      </camera>
+      <plugin name="mobrob_camera" filename="libgazebo_ros_camera.so">
+          <alwaysOn>true</alwaysOn>
+          <updateRate>0.0</updateRate>
+          <cameraName>this_is_ignored</cameraName>
+          <imageTopicName>image_raw</imageTopicName>
+          <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+          <frameName>camera_link</frameName>
+          <hackBaseline>0.07</hackBaseline>
+          <distortionK1>0.0</distortionK1>
+          <distortionK2>0.0</distortionK2>
+          <distortionK3>0.0</distortionK3>
+          <distortionT1>0.0</distortionT1>
+          <distortionT2>0.0</distortionT2>
+      </plugin>
+  </sensor>
+</link>
+
+    <!-- ************************ JOINTS ***********************************  -->
+
+    <joint name='picture_joint' type='fixed'>
+      <parent>chassis</parent>
+      <child>picture</child>
+      <pose>0 0 0 0 0 0</pose>
+    </joint>
+
+    <joint name='caster_joint' type='fixed'>
+      <parent>chassis</parent>
+      <child>front_caster</child>
+      <pose>0 0 0 0 0 0</pose>
+    </joint>
+    
+    <joint name="left_wheel_hinge" type="revolute" >
+      <pose>0 0 0.0 0 0 0</pose>
+      <child>left_wheel</child>
+      <parent>chassis</parent>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+
+    <joint name="right_wheel_hinge" type="revolute">
+      <pose>0 0 0.0 0 0 0</pose>
+      <child>right_wheel</child>
+      <parent>chassis</parent>
+      <axis>
+        <xyz>0 0 1</xyz>
+      </axis>
+    </joint>
+
+    <joint name="imu_joint" type="fixed">
+      <parent>chassis</parent>
+      <child>imu_link</child>
+      <pose>0 0 0 0 0 0</pose>
+    </joint>
+    
+    <joint name="camera_joint" type="fixed">
+      <parent>chassis</parent>
+      <child>camera_link</child>
+      <pose>0 0 0 0 0 0</pose>
+    </joint>  
+
+     <!-- *********************** JOINT STATE PUBLISHER *********************   -->
+  
+    <plugin name="mobrob_joint_state" filename="libgazebo_ros_joint_state_publisher.so">
+      <ros>
+        <remapping>~/out:=joint_states</remapping>
+      </ros>
+      <update_rate>30</update_rate>
+      <joint_name>left_wheel_hinge</joint_name>
+      <joint_name>right_wheel_hinge</joint_name>
+    </plugin>   
+    
+     <!-- *********************** WHEEL ODOMETRY ***************************    -->
+
+    <plugin filename="libgazebo_ros_diff_drive.so" name="model_diff_drive_plugin">
+      <ros>
+        <namespace>/mobrob</namespace>
+        <!-- <remapping>cmd_vel:=rob_cmd_vel</remapping> -->
+        <!-- <remapping>odom:=odom_platform_robot</remapping> -->
+      </ros>
+
+      <!-- kinematics -->
+      <wheel_separation>0.151</wheel_separation>
+      <wheel_diameter>0.06</wheel_diameter>
+      <!-- wheels -->
+      <left_joint>left_wheel_hinge</left_joint>
+      <right_joint>right_wheel_hinge</right_joint>
+      <!-- <left_wheel_hinge>left_wheel_hinge</left_wheel_hinge>
+      <right_wheel_hinge>right_wheel_hinge</right_wheel_hinge> -->
+      <!-- output -->
+      <publish_odom>true</publish_odom>
+      <publish_odom_tf>true</publish_odom_tf>
+      <publish_wheel_tf>true</publish_wheel_tf>
+
+    </plugin>
+  </model>
+</sdf>

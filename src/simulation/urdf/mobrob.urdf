@@ -1,0 +1,108 @@
+<?xml version="1.0"?> 
+<!-- INTRO TO THIS FILE: This is a URDF (Universal Robot Descriptor FIle). 
+This is a file that describes physical characteristics of our robot for 
+ROS.  We use this file to describe any kind of robot we put into ROS in a 
+common way.  This allows ROS to make general tools that work with many 
+different kinds of robots.  A more detailed tutorial about URDF files can 
+be found here: http://wiki.ros.org/urdf/Tutorials --> 
+ 
+<!-- this is a visual model only.  (You can also have another type of model 
+with hit boxes for physics simulation.) 
+Our raspberry pi is probably not fast enough to do that simulation) --> 
+<robot name="visual"> 
+ 
+<!-- the material tag allows us to declare different materials that we can 
+use later to color parts of our robot.  The rgba value are values between 0 
+and 1 for the components of red, green, and blue that we have, and then the 
+a component is alpha which is how 'see-through' the color is.  (ie 0 would 
+be completely see-through, and 1 is completely opaque) --> 
+<material name="blue"> 
+    <color rgba="0 0 0.8 1"/> 
+  </material> 
+  <material name="black"> 
+    <color rgba="0 0 0 1"/> 
+  </material> 
+  <material name="white"> 
+    <color rgba="1 1 1 1"/> 
+  </material> 
+ 
+<!-- the link tag defines a link (arm or something for a robot).  Inside 
+the link, the 'visual' tag allows us to access properties of the visual 
+model of the robot (as opposed to the physics-simulated model.  This one 
+
+makes this link appear as a cylinder with height of .001m and radius of 
+.055m.  Lastly, we have the origin tag, which sets the <0,0,0> coordinates 
+for this link. --> 
+<link name="base_link"> 
+    <visual> 
+      <geometry> 
+        <box size=".1524 .12 .005"/> 
+      </geometry> 
+    </visual> 
+    <origin rpy="0 0 0" xyz="0 0 .04"/> 
+  </link> 
+ 
+<!-- This is pretty much all the same stuff as the previous link, except 
+here we also define a material (color) for the link.  Notice that the name 
+of the material here has to match a valid material name that we defined 
+earlier in the file.  (You can search for 'material name="white"' if you 
+want to find the material.) --> 
+  <link name="right_wheel"> 
+    <visual> 
+      <geometry> 
+    <cylinder length="0.005" radius=".03"/> 
+      </geometry> 
+      <origin rpy="-1.570796 0 0" xyz="0 0 0"/> 
+      <material name="white"/> 
+    </visual> 
+  </link> 
+ 
+    <link name="left_wheel"> 
+    <visual> 
+      <geometry> 
+    <cylinder length="0.005" radius=".03"/> 
+      </geometry> 
+      <origin rpy="-1.570796 0 0" xyz="0 0 0"/> 
+      <material name="white"/> 
+    </visual> 
+  </link> 
+ 
+<!-- the joint tag here defines our first joint.  A joint is a relationship 
+between two links.  Here we have a continuous joint, which is just a joint 
+that rotates about one axis indefinitely (like an wheel).  Some other joint 
+types are prismatic (a sliding joint like the translation upward of a 
+forklift), revolute (for elbow-like joints), as well as a few more advanced
+
+joints.  The axis of rotation of this joint is defined with the 'axis' tag. 
+This joint rotates around the positive y axis.  Take note that rotations 
+are in radians, and the right hand rule is used to determine which 
+direction is positive.  (so here a rotation into the page while looking 
+down at the robot is positive)  You'll notice a 'parent' and a 'child' tag. 
+These tags tell ROS which links should be connected to each other by this 
+joint.  When we give this joint a rotation value, the parent stays still 
+and the child is rotated with respect to the parent. Here, the wheels 
+should rotate, not the main body (or 'base-link), so the wheels are the 
+children, and the base_link is the parent.  The origin tag tells us where 
+this link is actually located with respect to the parent link's origin. 
+Notice there are no limits for this type of joint, since it can rotate 
+continuously. --> 
+  <joint name="right_wheel_joint" type="continuous"> 
+    <axis xyz=" 0 1 0"/> 
+    <parent link="base_link"/> 
+    <origin rpy="0 0 0" xyz="-.03 -.0635 0"/> 
+    <child link="right_wheel"/> 
+  </joint> 
+ 
+<!-- this is almost exactly the same as above, except for the origin. 
+You'll notice the axis of rotation is the same, since we want 'positive' 
+rotations to be for 'forward' moving wheels in both cases. --> 
+  <joint name="left_wheel_joint" type="continuous"> 
+    <axis xyz=" 0 1 0"/> 
+    <parent link="base_link"/> 
+    <origin rpy="0 0 0" xyz="-.03 .0635 0"/> 
+    <child link="left_wheel"/> 
+  </joint> 
+ 
+ 
+<!-- the end of our urdf file :( --> 
+</robot> 

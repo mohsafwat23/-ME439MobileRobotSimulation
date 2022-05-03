@@ -1,0 +1,13 @@
+material uwm
+{
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture uwm.png
+			}
+		}
+	}
+}
