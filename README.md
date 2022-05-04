@@ -5,6 +5,11 @@ For Ubuntu 20.04: https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debia
 #### Build ####
 `colcon build`
 
+### Install Gazebo ###
+`sudo apt install gazebo11 libgazebo11 libgazebo11-dev`
+
+`sudo apt install ros-foxy-gazebo-ros-pkgs ros-foxy-cv-bridge`
+
 #### Source Enviroment and Gazebo ####
 `source install/setup.bash`
 
