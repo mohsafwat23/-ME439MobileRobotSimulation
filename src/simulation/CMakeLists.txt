@@ -64,6 +64,7 @@ install(
 ## Install Python scripts
 install(
   PROGRAMS src/insert_mobrob.py
+  PROGRAMS src/lqr.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
