@@ -25,7 +25,7 @@ def generate_launch_description():
         
         # Spawn robot
         Node(package='simulation', executable='insert_mobrob.py', output='screen',
-             arguments=[robot_sdf_path, '0', '0', '0', '0']),
+             arguments=[robot_sdf_path, '0', '0', '0', '1.5707']),
 
         # Node(package='robot_state_publisher', executable='robot_state_publisher', output='screen',
         #     arguments=[urdf_path]),

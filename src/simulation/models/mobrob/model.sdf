@@ -406,6 +406,7 @@
         <!-- <remapping>cmd_vel:=rob_cmd_vel</remapping> -->
         <!-- <remapping>odom:=odom_platform_robot</remapping> -->
       </ros>
+      <update_rate>15</update_rate>
 
       <!-- kinematics -->
       <wheel_separation>0.151</wheel_separation>
