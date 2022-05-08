@@ -1,5 +1,9 @@
 # ME439MobileRobotSimulation
 # The repository is a simulation of an LQR controller for a differential mobile robot on Gazebo and ROS2 #
+
+### Prerequisites ####
+The trajectory based LQR controller is available in the following repository: https://github.com/mohsafwat23/ME439MobileRobotEKF
+
 #### Install Ros2 foxy ####
 For Ubuntu 20.04: https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html
 
@@ -25,6 +29,20 @@ For Ubuntu 20.04: https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debia
 Tutorial: https://www.theconstructsim.com/ros2-qa-217-how-to-mix-ros1-and-ros2-packages/
 
 `ros2 run ros1_bridge dynamic_bridge --bridge-all-topics`
+
+#### Running the simulation ####
+Option 1 (1 waypoint):
+
+`ros2 launch simulation gazebo_sim_launch.py`
+
+and run `ros2 run simulation lqr.py`
+
+Option 2 (trajectory): 
+
+`ros2 launch simulation gazebo_sim_launch.py`
+
+and from the other Repo run `roslaunch mobrob gazebo_sim.launch`
+
 
 #### Kill gazebo server if it crashes ####
 `killall -9 gzserver`
