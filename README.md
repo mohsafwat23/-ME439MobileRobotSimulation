@@ -1,4 +1,5 @@
 # ME439MobileRobotSimulation
+# The repository is a simulation of an LQR controller for a differential mobile robot on Gazebo and ROS2 #
 #### Install Ros2 foxy ####
 For Ubuntu 20.04: https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html
 
